@@ -2090,6 +2090,11 @@ __webpack_require__.r(__webpack_exports__);
         image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.bbc.com%2Fnews%2Fscience-environment-49744435&psig=AOvVaw2cVhpBq0Jl0NOTQK-p-YyF&ust=1631364718450000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCPjjt6e59PICFQAAAAAdAAAAABAD",
         image_alt: "Bird Image Alt",
         size: 22
+      }, {
+        name: "Bird 1",
+        image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.bbc.com%2Fnews%2Fscience-environment-49744435&psig=AOvVaw2cVhpBq0Jl0NOTQK-p-YyF&ust=1631364718450000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCPjjt6e59PICFQAAAAAdAAAAABAD",
+        image_alt: "Bird Image Alt",
+        size: 22
       }]
     };
   },
@@ -2135,17 +2140,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "GaleryItem.Vue",
   data: function data() {
     return {
-      alt: "Image de teste",
-      link: "imgs/bird1.jpg"
+      titulo: "Galeria de Imagens"
     };
   },
   props: {
-    foto_url: String = '',
-    foto_alt: ''
+    foto_url: String,
+    foto_alt: String,
+    foto_name: String,
+    foto_size: Number
   }
 });
 
@@ -19793,7 +19800,11 @@ var render = function() {
     _c(
       "ul",
       _vm._l(_vm.birds, function(bird, index) {
-        return _c("li", [_c("galery-item")], 1)
+        return _c(
+          "li",
+          [_c("galery-item", { attrs: { titulo: bird.name } })],
+          1
+        )
       }),
       0
     )
@@ -19823,7 +19834,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h3", [_vm._v("Titulo do Card")]),
+    _c("h3", [_vm._v(_vm._s(_vm.titulo))]),
     _vm._v(" "),
     _c("img", { attrs: { src: this.link, alt: this.alt } }),
     _vm._v(" "),
@@ -19831,7 +19842,9 @@ var render = function() {
     _vm._v(" "),
     _c("h4", [_vm._v("Detalhes do passaro")]),
     _vm._v(" "),
-    _c("p", [_vm._v("30 centimentros de invergadura.......")])
+    _c("p", [_vm._v("30 centimentros de invergadura.......")]),
+    _vm._v(" "),
+    _c("p", [_vm._v(_vm._s(_vm.titulo))])
   ])
 }
 var staticRenderFns = []

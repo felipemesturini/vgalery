@@ -1,11 +1,11 @@
 <template>
     <div>
         <h3>{{ titulo }}</h3>
-        <img v-bind:src="this.link" :alt="this.alt"/>
+        <img v-bind:src="this.url" :alt="this.alt"/>
         <p></p>
         <h4>Detalhes do passaro</h4>
-        <p>30 centimentros de invergadura.......</p>
-        <p>{{ titulo }}</p>
+        <p>Nome: {{ name }}</p>
+        <p>Tamanho: {{ size }}</p>
     </div>
 </template>
 
@@ -14,14 +14,14 @@
         name: "GaleryItem.Vue",
         data() {
             return {
-                titulo: "Galeria de Imagens"
+                titulo: "Passaro"
             }
         },
         props: {
-            foto_url: String,
-            foto_alt: String,
-            foto_name: String,
-            foto_size: Number,
+            url: String,
+            alt: String,
+            name: String,
+            size: Number,
         }
     }
 </script>

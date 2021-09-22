@@ -10,6 +10,7 @@ Vue.use(VueResource);
 //Vue.use(require('vuex').default);
 
 Vue.component('galery-component', require('./components/GaleryComponent.vue').default);
+Vue.component('panel-component', require('./components/shared/Panel.vue').default);
 
 const app = new Vue({
     el: '#app',

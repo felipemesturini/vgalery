@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PhotoController;
+use App\Services\RemoteConfigService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::apiResource('photo', PhotoController::class);
+
+Route::get('kreait/storage', fn(Request $request) =>
+    (new RemoteConfigService)->content()
+);

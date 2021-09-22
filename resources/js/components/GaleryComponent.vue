@@ -1,9 +1,11 @@
 <template>
-    <div>
-        <h2>Galeria de images</h2>
-        <ul>
-            <li v-for="(bird, index) in birds">
-                <galery-item :name="bird.name" :url="bird.image" :alt="bird.alt"></galery-item>
+    <div class="corpo">
+        <h2 class="centralizado">Galeria de images</h2>
+        <input type="search" class="filter" v-on:input="filterText = $event.target.value"
+               placeholder="Informe a pesquisa" />
+        <ul class="lista">
+            <li class="item-lista" v-for="bird of filteredBirds">
+                <galery-item class="thumbnail" :name="bird.name" :url="bird.image" :alt="bird.alt"></galery-item>
             </li>
         </ul>
     </div>
@@ -19,18 +21,30 @@
         },
         data() {
             return {
-                birds: []
+                birds: [],
+                filterText: ""
             }
         },
         computed: {
             firstPerson: function () {
                 let person = this.birds.first;
-                console.log(person);
-                return this.birds[0].name;
+                console.log('firstPerson');
+                return 'teste ' + this.filterText;
             },
             lastPersion: function () {
                 let person = this.birds[this.birds.length - 1];
+                console.log('lastPersion');
                 return person.name;
+            },
+            filteredBirds() {
+                console.log('filteredBirds');
+                if (this.filterText) {
+                    let regEx = new RegExp(this.filterText.trim(), 'i');
+                    return this.birds.filter(bird => regEx.test(bird.name));
+                }
+                else {
+                    return this.birds;
+                }
             }
         },
         methods: {
@@ -50,5 +64,26 @@
 </script>
 
 <style scoped>
+    .corpo {
+        font-family: Arial Helvetica sans-serif;
+        width: 90%;
+        margin: 0 auto;
+    }
 
+    .centralizado {
+        text-align: center;
+    }
+
+    .lista {
+        list-style: none;
+    }
+
+    ul .item-lista {
+        display: inline-block;
+    }
+
+    .filter {
+        display: inline-block;
+        width: 90%;
+    }
 </style>
